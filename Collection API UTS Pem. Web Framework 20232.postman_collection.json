@@ -1,0 +1,501 @@
+{
+	"info": {
+		"_postman_id": "3f6e8ba7-871d-4a81-acad-c50116d60419",
+		"name": "Collection API UTS Pem. Web Framework 20232",
+		"description": "Collection ini digunakan mahasiswa untuk testing API yang akan mahasiswa buat untuk pengerjaan soal UTS (**jangan di otak-atik field body nya**).\n\nKami sebagai dosen pengampu matakuliah akan menggunakan collection API ini untuk memudahkan proses penilaian, sehingga mahasiswa bisa mengetahui berapa nilai UTS yang didapat hanya dengan melakukan pemeriksaan kesesuaian antara API yang dibuat dengan request-response dari collection API ini. Untuk memudahkan penggunaaan collection API serta **SYARAT NILAI** ini ikuti aturan-aturan berikut:\n\n1. **WAJIB HOSTING**, berbayar atau tidak dipersilahkan asalkan pada saat penilaian API dapat berjalan dengan baik. Kegagalan request-response API karena permasalahan hosting diluar tanggung jawab dosen pengampu dan sudah dipastikan dapat nilai 0.\n2. **WAJIB DOMAIN**, boleh menggunakan sub-domain sehingga bisa membeli domain secara kolektif.\n3. Pada collection terdapat beberapa simbol seperti berikut, **yang mana simbol ini harus mahasiswa ganti sesuai dengan API yang mahasiswa buat**:\n    1. **{{baseUrl}}** : nama domain boleh menggunakan http atau https\n    2. **{{jwtToken}}** : token JWT untuk otentikasi dan otorisasi (segmentasi role admin dan user)\n    3. **{{id}}** : id untuk melakukan edit ataupun delete, id: 1, 2, 3, dst\n    4. \"isi kan bla bla bla\" : isi kan inputan sesuai dengan seharusnya (boleh dimodifikasi inputannya untuk cek validasi inputan)\n4. **WAJIB GUNAKAN VALIDASI INPUTAN**\n5. **WAJIB LARAVEL**\n    \n\n**Apa yang harus saya penuhi untuk dapat nilai UTS?**\n\n1. Pengumpulan dan presensi wajib di BOC (ketentuan fakultas tidak bisa kompromi)\n2. Tidak melanggar aturan-aturan diatas\n3. Pengumpulan UTS berupa **link source code project UTS di github/gitlab/bitbucket (public bukan hasil kompresi seperti zip/rar), dan alamat domain**\n4. Melebihi batas waktu pengumpulan dianggap tidak mengikuti UTS\n    \n\n> Merugilah dia yang mencontek dan/atau memberi contekan kepada orang lain. Karena sesungguhnya dia telah membodohi dirinya sendiri serta orang lain.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33387666"
+	},
+	"item": [
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "read",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwtToken}}",
+								"type": "text",
+								"uuid": "95ab52d8-2f9c-4b67-92d3-65ed32f840f3"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories"
+							]
+						},
+						"description": "melihat semua kategori"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwtToken}}",
+								"type": "text",
+								"uuid": "f248d112-16c7-4223-bcc1-f500dae98e5d"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"isi kan <name> <categories>\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories"
+							]
+						},
+						"description": "membuat kategori"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwtToken}}",
+								"type": "text",
+								"uuid": "61857c44-ebb4-4917-bfc7-2c09566bfa37"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"isi kan <name> <categories>\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/categories/{{id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"{{id}}"
+							]
+						},
+						"description": "menyunting kategori sesuai id yang dipilih"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywibmFtZSI6IkZhcmhhbiBGYWRoaWxsYWgiLCJyb2xlIjoidXNlciIsImlhdCI6MTcxNjIwNDQwMSwiZXhwIjoxNzE2MjA4MDAxfQ.toSF8y7s-p5p4KlwV1UkIkRW2RDFkUV8af1EtLx_yE4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwtToken}}",
+								"type": "text",
+								"uuid": "e64ab3d2-8c9f-4556-9b62-ddd7a966afba"
+							}
+						],
+						"url": {
+							"raw": "http://utsfarhan1225.webframework.my.id/api/categories/1",
+							"protocol": "http",
+							"host": [
+								"utsfarhan1225",
+								"webframework",
+								"my",
+								"id"
+							],
+							"path": [
+								"api",
+								"categories",
+								"1"
+							]
+						},
+						"description": "menghapus kategori sesuai dengan id yang dipilih"
+					},
+					"response": []
+				}
+			],
+			"description": "kelola kategori produk"
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "read",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywibmFtZSI6IkZhcmhhbiBGYWRoaWxsYWgiLCJyb2xlIjoidXNlciIsImlhdCI6MTcxNjIwNDQwMSwiZXhwIjoxNzE2MjA4MDAxfQ.toSF8y7s-p5p4KlwV1UkIkRW2RDFkUV8af1EtLx_yE4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwtToken}}",
+								"type": "text",
+								"uuid": "08eaa73e-6b5e-4079-81cf-df4cb8764d37"
+							}
+						],
+						"url": {
+							"raw": "http://utsfarhan1225.webframework.my.id/api/products",
+							"protocol": "http",
+							"host": [
+								"utsfarhan1225",
+								"webframework",
+								"my",
+								"id"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						},
+						"description": "melihat semua data produk"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywibmFtZSI6IkZhcmhhbiBGYWRoaWxsYWgiLCJyb2xlIjoidXNlciIsImlhdCI6MTcxNjIwNDQwMSwiZXhwIjoxNzE2MjA4MDAxfQ.toSF8y7s-p5p4KlwV1UkIkRW2RDFkUV8af1EtLx_yE4",
+								"type": "text",
+								"uuid": "bc33e649-b6b6-4ea6-b4bc-dc35e9d95bd2"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "chiken",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "makanan enak",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "5000",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "Makanan",
+									"type": "text"
+								},
+								{
+									"key": "expired_at",
+									"value": "2024-05-21",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"description": "upload gambar produk",
+									"type": "file",
+									"src": "postman-cloud:///1ef169dd-fa6e-4cb0-ba51-1f4aa9bf99cf"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://utsfarhan1225.webframework.my.id/api/products",
+							"protocol": "http",
+							"host": [
+								"utsfarhan1225",
+								"webframework",
+								"my",
+								"id"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						},
+						"description": "membuat data produk baru"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwtToken}}",
+								"type": "text",
+								"uuid": "966a2c85-3a04-487d-a292-fd72b7bcdba3"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "isi kan nama produk",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "isi kan deskripsi produk",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "isi kan harga produk",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "isi kan nama kategori produk (bukan id nya)",
+									"type": "text"
+								},
+								{
+									"key": "expired_at",
+									"value": "isi kan tanggal kadaluarsa produk",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"description": "upload gambar produk",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "http://utsfarhan1225.webframework.my.id/api/products/{{id}}",
+							"protocol": "http",
+							"host": [
+								"utsfarhan1225",
+								"webframework",
+								"my",
+								"id"
+							],
+							"path": [
+								"api",
+								"products",
+								"{{id}}"
+							]
+						},
+						"description": "menyunting data produk sesuai dengan id yang dipilih"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwtToken}}",
+								"type": "text",
+								"uuid": "343f40dc-7742-4e6f-9949-4cb05e95779a"
+							}
+						],
+						"url": {
+							"raw": "http://utsfarhan1225.webframework.my.id/api/products/{{id}}",
+							"protocol": "http",
+							"host": [
+								"utsfarhan1225",
+								"webframework",
+								"my",
+								"id"
+							],
+							"path": [
+								"api",
+								"products",
+								"{{id}}"
+							]
+						},
+						"description": "menghapus data produk dengan id yang dipilih"
+					},
+					"response": []
+				}
+			],
+			"description": "mengelola data produk"
+		},
+		{
+			"name": "register",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6IkZBUkhBTkZBREhJTExBSCBVQlBLQVJBV0FORyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzE2MTkyNjM1LCJleHAiOjE3MTYxOTYyMzV9.g_xIiSwZrYGce4o2vJ49aoWOzWpQZ2gJo9qPNyQPwCk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6IkZBUkhBTkZBREhJTExBSCBVQlBLQVJBV0FORyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzE2MTkyNjM1LCJleHAiOjE3MTYxOTYyMzV9.g_xIiSwZrYGce4o2vJ49aoWOzWpQZ2gJo9qPNyQPwCk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Farhan Fadhillah\",\r\n    \"email\":\"fadhillahfarhan91@gmail.com\",\r\n    \"password\": \"123farhan@\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://utsfarhan1225.webframework.my.id/api/register",
+					"protocol": "http",
+					"host": [
+						"utsfarhan1225",
+						"webframework",
+						"my",
+						"id"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "registrasi akun"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6IkZBUkhBTkZBREhJTExBSCBVQlBLQVJBV0FORyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzE2MTkyNjM1LCJleHAiOjE3MTYxOTYyMzV9.g_xIiSwZrYGce4o2vJ49aoWOzWpQZ2gJo9qPNyQPwCk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"fadhillahfarhan91@gmail.com\",\r\n    \"password\":\"123farhan@\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://utsfarhan1225.webframework.my.id/api/login",
+					"protocol": "http",
+					"host": [
+						"utsfarhan1225",
+						"webframework",
+						"my",
+						"id"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register with oauth google",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwibmFtZSI6IkZBUkhBTkZBREhJTExBSCBVQlBLQVJBV0FORyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzE2MjA0NDc0LCJleHAiOjE3MTYyMDgwNzR9.6v04EnmV9jKBLJDyVCHMKfjEsYE8otMa62sVpMiVveo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://utsfarhan1225.webframework.my.id/api/oauth/register/",
+					"protocol": "http",
+					"host": [
+						"utsfarhan1225",
+						"webframework",
+						"my",
+						"id"
+					],
+					"path": [
+						"api",
+						"oauth",
+						"register",
+						""
+					]
+				},
+				"description": "registrasi akun baru menggunakan google oauth (install laravel socialite)"
+			},
+			"response": []
+		}
+	]
+}
